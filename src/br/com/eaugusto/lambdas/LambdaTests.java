@@ -1,7 +1,9 @@
 package br.com.eaugusto.lambdas;
 
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.IntBinaryOperator;
+import java.util.function.Supplier;
 
 /**
  * @author Eduardo Augusto (github.com/AsrielDreemurrGM/)
@@ -44,6 +46,20 @@ public class LambdaTests {
 		// values of type Long and a BiFunction Lambda as parameters.
 		Long result = calculate(15L, 15L, (Long value1, Long value2) -> value1 + value2);
 		printToConsole(result);
+
+		printToConsole("Using Runnable To Print 'Hello World'");
+		Runnable helloWorld = () -> System.out.println("Hello World");
+		helloWorld.run();
+
+		printToConsole("Using A Consumer Of Type String To Print 'Hello World - Consumer'");
+		Consumer<String> stringConsumer = (String string) -> {
+			System.out.println(string);
+		};
+		stringConsumer.accept("Hello World - Consumer");
+
+		printToConsole("Using A Supplier Of Type Integer To Supply The Number 100");
+		Supplier<Integer> callableInteger = () -> 100;
+		printToConsole(callableInteger.get());
 	}
 
 	public static <T> void printToConsole(T value) {
